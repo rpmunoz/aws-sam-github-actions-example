@@ -39,7 +39,7 @@ jobs:
           # In this step we are setting variables and persistenting them
           # into the environment so that they can be utilized in other steps
           BRANCH=${REF#refs/heads/}
-          REGION=$(cat ./config.json | jq -r .region)
+          REGION=${{ secrets.AWS_REGION }}
           ENVIRONMENT=`echo $REPO | tr "/" "-"`
           BUCKET_NAME=$BRANCH-$ENVIRONMENT
           echo "::set-output name=environment::$ENVIRONMENT"
